@@ -1,11 +1,11 @@
 # Site settings
-author: Nikolaus Dean Riggi
-title: 
+author: Nikolaus Riggi
+title: Just An Algorithm Away
 header-img: img/home-bg.png
 email: nikolaus.riggi@gmail.com
-copyright_name: Nikolaus Dean Riggi
+copyright_name: Nikolaus Riggi
 description: > # this means to ignore newlines until "baseurl:"
-  
+  Lets learn some code 
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  FreeRunner34
