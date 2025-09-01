@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <article class="card">
+    <h2>Work Order #{{ wo.id }}</h2>
+    <p><strong>Customer:</strong> {{ wo.customer_name }}</p>
+    <p><strong>Vehicle:</strong> {{ wo.vehicle }}</p>
+    <p><strong>Status:</strong> <span class="badge {{ wo.status|lower|replace(' ', '-') }}">{{ wo.status }}</span></p>
+    <p><strong>Created:</strong> {{ wo.created_at.strftime("%Y-%m-%d %H:%M") }}</p>
+    <p><strong>Updated:</strong> {{ wo.updated_at.strftime("%Y-%m-%d %H:%M") }}</p>
+    <h3>Complaint</h3>
+    <pre class="pre">{{ wo.complaint }}</pre>
+    <div class="actions">
+      <a href="{{ url_for('edit', wo_id=wo.id) }}">Edit</a>
+      <form method="post" action="{{ url_for('delete', wo_id=wo.id) }}" onsubmit="return confirm('Delete this work order?');" style="display:inline;">
+        <button class="danger" type="submit">Delete</button>
+      </form>
+      <a class="secondary" href="{{ url_for('index') }}">Back</a>
+    </div>
+  </article>
+{% endblock %}

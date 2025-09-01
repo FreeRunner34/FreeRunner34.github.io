@@ -1,24 +1,68 @@
-#Clean Blog by Start Bootstrap - Jekyll Version
+# Work Orders Web App (Flask + SQLite)
 
-The official Jekyll version of the Clean Blog theme by [Start Bootstrap](http://startbootstrap.com/).
+A minimal CRUD web application tailored for automotive work orders.
 
-###[View Live Demo &rarr;](http://blackrockdigital.github.io/startbootstrap-clean-blog-jekyll/)
+## Features
+- Create, view, edit, and delete work orders
+- Search by customer, vehicle, status, or complaint
+- SQLite database (file-based, zero config)
 
-## Before You Begin
+## Quickstart
+```bash
+# 1) Create & activate a virtual environment (optional but recommended)
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux:
+source .venv/bin/activate
 
-In the _config.yml file, the base URL is set to /startbootstrap-clean-blog-jekyll which is this themes gh-pages preview. It's recommended that you remove the base URL before working with this theme locally!
+# 2) Install dependencies
+pip install -r requirements.txt
 
-It should look like this:
-`baseurl: ""`
+# 3) Run the app
+python app.py
 
-## What's Included
+# App runs at http://127.0.0.1:5000
+```
 
-A full Jekyll environment is included with this theme. If you have Jekyll installed, simply run `jekyll serve` in your command line and preview the build in your browser. You can use `jekyll serve --watch` to watch for changes in the source files as well.
+## Project Structure
+```
+workorders_app/
+├─ app.py
+├─ requirements.txt
+├─ templates/
+│  ├─ base.html
+│  ├─ index.html
+│  ├─ create.html
+│  ├─ edit.html
+│  └─ detail.html
+└─ static/
+   └─ style.css
+```
 
-A Grunt environment is also included. There are a number of tasks it performs like minification of the JavaScript, compiling of the LESS files, adding banners to keep the Apache 2.0 license intact, and watching for changes. Run the grunt default task by entering `grunt` into your command line which will build the files. You can use `grunt watch` if you are working on the JavaScript or the LESS.
+## Next Steps / Ideas
+- Add login/auth (Flask-Login) and user accounts
+- Export to CSV for reporting
+- Add file uploads (photos, PDFs)
+- Status transitions with timestamps
+- Deploy to a VPS or a PaaS like Railway/Render
+```
 
-You can run `jekyll serve --watch` and `grunt watch` at the same time to watch for changes and then build them all at once.
 
-## Support
+## One-tap Phone Launch (Render)
+1. Zip this folder (or use the provided .zip).
+2. Go to render.com (create a free account).
+3. Create > Web Service > Build and deploy from a repo (recommended) or from the .zip upload.
+4. Use the defaults; Render detects Python.
+5. When deployed, open the URL in Safari/Chrome on your phone.
+6. Tap the browser menu and **Add to Home Screen**. The app behaves like a native app (PWA).
 
-Visit Clean Blog's template overview page on Start Bootstrap at http://startbootstrap.com/template-overviews/clean-blog/ and leave a comment, email feedback@startbootstrap.com, or open an issue here on GitHub for support.
+## PWA notes
+- `static/manifest.json` + `static/service-worker.js` let you install it to your home screen.
+- Offline: pages you visit get cached; forms still need network to save to the DB.
+
+
+## Auth, CSV Export, and Demo Seed
+- **Login**: visit `/login` (default password `admin`, change via `ADMIN_PASSWORD` env var).
+- **Protected actions**: create/edit/delete/export/seed require login.
+- **CSV Export**: `/export.csv` downloads all work orders.
+- **Seed demo data**: `/seed-demo` creates a few sample work orders.

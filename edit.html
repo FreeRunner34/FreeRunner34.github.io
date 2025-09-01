@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Edit Work Order #{{ wo.id }}</h2>
+  <form method="post" class="card">
+    <label>Customer Name
+      <input name="customer_name" value="{{ wo.customer_name }}" required>
+    </label>
+    <label>Vehicle
+      <input name="vehicle" value="{{ wo.vehicle }}" required>
+    </label>
+    <label>Main Complaint
+      <textarea name="complaint" rows="5" required>{{ wo.complaint }}</textarea>
+    </label>
+    <label>Status
+      <select name="status">
+        {% for s in ["Open", "In Progress", "Closed"] %}
+        <option {% if wo.status==s %}selected{% endif %}>{{ s }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <div class="actions">
+      <button type="submit">Save</button>
+      <a class="secondary" href="{{ url_for('detail', wo_id=wo.id) }}">Cancel</a>
+    </div>
+  </form>
+{% endblock %}

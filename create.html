@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>New Work Order</h2>
+  <form method="post" class="card">
+    <label>Customer Name
+      <input name="customer_name" required>
+    </label>
+    <label>Vehicle (e.g., 2013 Infiniti G37S)
+      <input name="vehicle" required>
+    </label>
+    <label>Main Complaint
+      <textarea name="complaint" rows="5" required></textarea>
+    </label>
+    <label>Status
+      <select name="status">
+        <option>Open</option>
+        <option>In Progress</option>
+        <option>Closed</option>
+      </select>
+    </label>
+    <div class="actions">
+      <button type="submit">Create</button>
+      <a class="secondary" href="{{ url_for('index') }}">Cancel</a>
+    </div>
+  </form>
+{% endblock %}
